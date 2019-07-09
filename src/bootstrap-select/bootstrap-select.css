@@ -1,3 +1,80 @@
-button::after {
+hr {
+  margin: 0 5px 0 5px;
+}
+
+.select-root button::after {
   content: "⯆";
+  float  : left;
+}
+
+.bootstrap-select {
+  width : 300px;
+  margin: 10px;
+}
+
+.select-item-row {
+  margin        : 5px;
+  vertical-align: center;
+  text-align    : center;
+  padding       : 5px 5px 10px 5px;
+  cursor        : pointer;
+
+
+}
+
+.select-item-container>.select-item-row:not(:last-child) {
+  border-style: solid;
+  border-width: 0 0 1px 0;
+  border-color: #ecebeb;
+}
+
+.select-item-row:hover {
+  background-color: rgb(216, 231, 245);
+}
+.multi.select-item-row::after{
+  content    : '☐';
+  float      : right;
+  margin-left: 10px;
+}
+.select-item-row.selected::after {
+  content    : '🗹';
+  float      : right;
+  margin-left: 10px;
+}
+
+.select-item-container {
+  margin-top      : 2px 0 2px 0;
+  border          : 0.05em solid #ecebeb;
+  background-color: #ffffff;
+}
+
+.selected-box {
+  border: 1px solid #ffffff;
+  margin: 3px;
+}
+.selected-box::before{
+  content    : '🗹';
+}
+
+.bootstrap-select input[type="text"] {
+  margin-bottom: 5px;
+  border       : none;
+}
+
+.bootstrap-select input[type="text"]:focus {
+  border    : none !important;
+  box-shadow: none !important;
+  outline   : none;
+}
+
+.bootstrap-select input[type="text"]:active {
+  border    : none !important;
+  box-shadow: none !important;
+  outline   : none;
+}
+
+.selected-box-container {
+  float: right;
+  width: 100%;
+  text-align: right;
 }
