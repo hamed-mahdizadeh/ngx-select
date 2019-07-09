@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ISelectItem } from './iselect-item';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

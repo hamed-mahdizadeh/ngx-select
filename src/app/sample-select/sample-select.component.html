@@ -1,11 +1,10 @@
 <div tabindex="1" class="dropdown bootstrap-select" style="float: right; text-align:center;" (blur)="triggerBlind()">
     <div class="select-root">
-        <button class="form-control" (click)="triggerBlind()">
+        <div class="form-control" (click)="triggerBlind()">
             <div style="max-width: 280px; float: right;">
-                <input [value]="selectedItem?.text"  style="float:right; border:none; outline: none;" />
-                <!-- <input (input)="onSearch($event.target.value)" [value]="selectedItem?.text"  style="float:right; border:none; outline: none;" /> -->
+                <input [ngModel]="key" (ngModelChange)="onSearch($event)"   style="float:right; border:none; outline: none;" />
             </div>
-        </button>
+        </div>
     </div>
     <div class="selected-box-container" *ngIf="settings.type === 'multi'">
         <button class="selected-box btn-sm btn-light" *ngFor="let item of selectedItems()" (click)="selectItem(item)">
@@ -13,7 +12,7 @@
         </button>
     </div>
     <div class="select-item-container" [hidden]="close">
-        <div class="select-item-row" *ngFor="let item of dataSource" (click)="selectItem(item)"
+        <div class="select-item-row" *ngFor="let item of filteredDataSource" (click)="selectItem(item)"
             [class.selected]="item.selected" [class.multi]="settings.type === 'multi'">
             {{item.text}}
         </div>

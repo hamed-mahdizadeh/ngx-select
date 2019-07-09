@@ -2,7 +2,7 @@ hr {
   margin: 0 5px 0 5px;
 }
 
-.select-root button::after {
+.select-root>div::after {
   content: "⯆";
   float  : left;
 }

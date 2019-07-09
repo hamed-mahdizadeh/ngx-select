@@ -16,8 +16,16 @@ export class SampleSelectComponent implements OnInit {
 
   selectedItem: any = null;
 
+  key: string;
+
+  filteredDataSource: ISelectItem[] = [];
+
   triggerBlind(): void {
     this.close = !this.close;
+  }
+  textBoxClick(event: Event):void{
+      event.preventDefault();
+      return;
   }
   selectItem(item: ISelectItem): void {
     !!this.selectedItem && this.selectedItem.text;
@@ -45,15 +53,24 @@ export class SampleSelectComponent implements OnInit {
     return this.dataSource.filter(i => i.selected === true);
   }
   onSearch(key: string) {
+    this.close = false;
     if (typeof this.search === "function") {
     } else {
-      this.dataSource = this.dataSource.filter(c => c.text.includes(key));
+      this.filteredDataSource = this.dataSource.filter(c => c.text.includes(key));
     }
   }
 
   @Input() selectItemChange: Function;
 
-  @Input() dataSource: ISelectItem[];
+  private _dataSource: ISelectItem[];
+
+  @Input() set dataSource(value: ISelectItem[]){
+      this._dataSource = value;
+      this.filteredDataSource = value.copyWithin(0, value.length);
+  };
+  get dataSource(): ISelectItem[]{
+    return this._dataSource;
+  }
 
   @Input() settings: SelectSettings = {
     type: "multi"
